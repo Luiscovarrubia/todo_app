@@ -1,0 +1,121 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+
+    <%= link_to 'Inicio', todos_path, class:'btn btn-success' %>
+    <%= link_to 'Crear nuevo Todo', todos_new_path, class:'btn btn-success' %>
+    <%= link_to 'Estados de Validación', todos_list_path, class:'btn btn-success' %>
+  </nav>
+
+
+
+
+
+......................
+<div class="row" >
+    <div class="col-md-6">
+    <div class="container">
+
+
+        <div class="container">
+          <div class="jumbotron">
+              <h1 class="display-3">Validados</h1>
+            </div>
+
+
+
+            <% @todos.each do |todo| %>
+             <% if todo.completed == true %>
+
+             <div class="well">
+                <div class="container">
+                    <div class="row">
+
+
+                  <div class="col-sm-6">
+                      <h5><strong>ID</strong></h5>
+                    <%=  todo.id %> </div>
+
+                      <div class="col-sm-6">
+                          <h5><strong>Contenido</strong></h5>
+                         <%=  todo.description %> </div>
+
+
+
+                        <div class="col-sm-6">
+                            <h5><strong>Validado</strong></h5>
+                          <%=  todo.completed %> </div>
+
+            <div>
+              <%= link_to 'Mostrar', todo ,class:'btn btn-info'%>
+              <%= link_to 'Edit', edit_todo_path(todo), class:'btn btn-primary' %>
+              <%= link_to 'Borrar', todo, method: :delete, data: { confirm: 'Seguro?' },class:'btn btn-warning' %>
+
+             </div>
+             <% end %>
+            </div>
+
+          </div>
+
+        </div>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+</div>
+
+    <div class="col-md-6">
+    <div class="container">
+
+
+          <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-3"> No Validados</h1>
+              </div>
+
+
+
+              <% @todos.each do |todo| %>
+               <% if todo.completed == false %>
+
+               <div class="well">
+                  <div class="container">
+                      <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <h5><strong>ID</strong></h5>
+                      <%=  todo.id %> </div>
+
+                        <div class="col-sm-6">
+                            <h5><strong>Contenido</strong></h5>
+                           <%=  todo.description %> </div>
+
+
+
+                          <div class="col-sm-6">
+                              <h5><strong>Validado</strong></h5>
+                            <%=  todo.completed %> </div>
+
+              <div>
+                <%= link_to 'Mostrar', todo ,class:'btn btn-info'%>
+                <%= link_to 'Edit', edit_todo_path(todo), class:'btn btn-primary' %>
+                <%= link_to 'Borrar', todo, method: :delete, data: { confirm: 'Seguro?' },class:'btn btn-warning' %>
+
+               </div>
+               <% end %>
+              </div>
+
+            </div>
+
+          </div>
+            <% end %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
